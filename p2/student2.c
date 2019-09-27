@@ -65,10 +65,12 @@ struct sender {
 	int seq; //seqnum of previously sent pkt
 	struct pkt last_pkt;
 	struct pkt last_ack;
+	int exp_seq; //expected sequence number
 };
 
 struct receiver {
 	struct pkt last_ack;
+	int exp_seq; //expected sequence number
 };
 
 struct pkt_node {
@@ -194,6 +196,7 @@ void A_input(struct pkt packet) {
 
 	sender.last_ack = packet;
 	sender.sending = 1; //now ready to send another packet
+	sender.exp_seq++;
 
 	printf("A_input: num_acks: %d, queue_length: %d\n", num_acks, queue_length());
 	// if ((num_acks + queue_length() == MaxMsgsToSimulate) && (num_acks != MaxMsgsToSimulate)) {
@@ -227,7 +230,8 @@ void A_timerinterrupt() {
 /* entity A routines are called. You can use it to do any initialization */
 void A_init() {
 	sender.sending = 1;
-	sender.seq = 1; //A_output assigns inverse so set to 1 for first pkt to have seqnum = 0
+	sender.seq = 0;
+	sender.exp_seq = 0;
 
 	struct pkt pkt;
 	pkt.seqnum = 0;
@@ -275,6 +279,10 @@ void B_input(struct pkt packet) {
 		return;
 	}
 
+	if (packet.seqnum != receiver.exp_seq) {
+		if (TraceLevel >= 2) printf("B_input: Received out of order packet, resending ACK\n");
+	}
+
 	if (TraceLevel >= 2) printf("B_input: Received packet, sending ACK\n");
 	struct pkt ack_pkt;
 	struct msg msg;
@@ -284,13 +292,13 @@ void B_input(struct pkt packet) {
 		msg.data[i] = packet.payload[i];
 		ack_pkt.payload[i] = packet.payload[i];
 	}
-	ack_pkt.checksum = checksum(ack_pkt); //TODO: does checksum work when no msg defined?
+	ack_pkt.checksum = checksum(ack_pkt);
 	tolayer3(BEntity, ack_pkt);
 
 	if (TraceLevel >= 2) printf("B_input: Sending message to layer 5\n");
 	tolayer5(BEntity, msg);
 	//TODO: messages incorrectly received
-
+	receiver.exp_seq++;
 	receiver.last_ack = ack_pkt;
 
 }
@@ -337,8 +345,8 @@ int checksum(struct pkt packet) {
 
 //add to tail of queue
 void add_to_queue(struct pkt_node* node) {
-	node->pkt.seqnum = !(sender.seq);
-	sender.seq = !(sender.seq);
+	node->pkt.seqnum = sender.seq;
+	sender.seq++; //= !(sender.seq);
 	node->pkt.checksum = checksum(node->pkt);
 	if (queue->tail == NULL){
 		queue->head = queue->tail = node;
