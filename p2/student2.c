@@ -49,7 +49,6 @@ clean:
 
 */
 
-#define RTT 15
 #define ALPHA 0.125
 #define BETA 0.25
 
@@ -81,7 +80,6 @@ struct pkt_queue {
 };
 
 extern int TraceLevel;
-extern int MaxMsgsToSimulate;
 struct sender sender;
 struct receiver receiver;
 struct pkt_queue *queue;
@@ -89,13 +87,11 @@ struct timeval start, end;
 double avg_rtt = 15;
 double dev_rtt = 0;
 double timeout = 15;
-int num_acks = 0;
 
 int checksum(struct pkt packet);
 void add_to_queue(struct pkt_node* node);
 struct pkt_node* get_pkt();
 int queue_length();
-void send_queue();
 
 /* 
  * A_output(message), where message is a structure of type msg, containing 
@@ -108,14 +104,7 @@ void A_output(struct msg message) {
 
 	//create packet to be added to queue
 	struct pkt queue_pkt;
-	// int seq = (sender.last_pkt.seqnum == 0) ? 1 : 0;
-	// int seq; //= (queue->tail->pkt.seqnum == 0) ? 1 : 0;
-	// if (queue->tail == NULL) seq = 0;
-	// else seq = (queue->tail->pkt.seqnum == 0) ? 1 : 0;
-
-	// queue_pkt.seqnum = seq;
 	memmove(queue_pkt.payload, message.data, MESSAGE_LENGTH);
-	// queue_pkt.checksum = checksum(queue_pkt);
 
 	//create queue node from packet and add to queue
 	struct pkt_node *node = (struct pkt_node*)malloc(sizeof(struct pkt_node));
@@ -126,7 +115,6 @@ void A_output(struct msg message) {
 
 	//if a packet is in transmission then do not send another
 	if (!sender.sending) return;
-	// while (!sender.sending);
 
 	//otherwise, get packet from head of queue and send it
 	struct pkt_node *send_pkt;
@@ -154,54 +142,32 @@ void B_output(struct msg message)  {
  */
 void A_input(struct pkt packet) {
 
-	//if received packet is corrupted, resend current packet
+	//update timeout value with data from most recent round trip
 	gettimeofday(&end, NULL);
 	double sample_rtt = end.tv_usec - start.tv_usec;
 	avg_rtt = ((1 - ALPHA) * avg_rtt) + (ALPHA * fabs(sample_rtt));
 	dev_rtt = ((1 - BETA) * dev_rtt) + (BETA * fabs(sample_rtt));
 	timeout = avg_rtt + (4 * dev_rtt);
-	printf("avg RTT: %f, start: %ld, end: %ld\n", avg_rtt, start.tv_usec, end.tv_usec);
+	if (TraceLevel >= 2) printf("avg RTT: %f, start: %ld, end: %ld\n", avg_rtt, start.tv_usec, end.tv_usec);
 
+	//if received packet is corrupted, resend current packet
 	if (packet.checksum != checksum(packet)) {
-		// if (sender.sending) {
-		// 	queue_last_pkt();
-		// 	if (TraceLevel >= 2) printf("A_input: pkt corrupted, adding to queue\n");
-		// } else {
-			// stopTimer(AEntity);
-			// startTimer(AEntity, RTT);
-			if (TraceLevel >= 2) printf("A_input: pkt corrupted, resending\n\
+		if (TraceLevel >= 2) printf("A_input: pkt corrupted, resending\n\
 	packet.checksum: %d, checksum(packet): %d\n", packet.checksum, checksum(packet));
-			tolayer3(AEntity, sender.last_pkt);
-			stopTimer(AEntity);
-			startTimer(AEntity, timeout);
-		// }
+		tolayer3(AEntity, sender.last_pkt);
+		stopTimer(AEntity);
+		startTimer(AEntity, timeout);
 		return;
 	}
 
-	//if received packet is ACK for previously sent packet, resent current packet
+	//if received packet is ACK for previously sent packet, ignore
 	if (packet.acknum == sender.last_ack.acknum) {
-		// stopTimer(AEntity);
-		// startTimer(AEntity, RTT);
 		if (TraceLevel >= 2) printf("A_input: duplicate ACK\n");
-		// tolayer3(AEntity, sender.last_pkt);
-		// stopTimer(AEntity);
-		// startTimer(AEntity, timeout);
 		return;
 	}
 	
-	//set the last received ack to this one
 	if (TraceLevel >= 2) printf("A_input: Received good ACK\n");
-	num_acks++;
-
 	sender.last_ack = packet;
-	// sender.sending = 1; //now ready to send another packet
-
-	if (TraceLevel >= 2) printf("A_input: num_acks: %d, queue_length: %d\n", num_acks, queue_length());
-	// if ((num_acks + queue_length() == MaxMsgsToSimulate) && (num_acks != MaxMsgsToSimulate)) {
-	// if (queue_length() != 0) {
-	// 	// stopTimer(AEntity);
-	// 	send_queue();
-	// }
 
 	stopTimer(AEntity);
 	struct pkt_node *send_pkt;
@@ -215,7 +181,7 @@ void A_input(struct pkt packet) {
 	sender.sending = 0;
 	tolayer3(AEntity, send_pkt->pkt);
 	if (TraceLevel >= 2) printf("A_input: sending message...\n");
-	startTimer(AEntity, timeout); //TODO: change this value, look at RTT slides in 14
+	startTimer(AEntity, timeout);
 	gettimeofday(&start, NULL);
 }
 
@@ -229,10 +195,8 @@ void A_timerinterrupt() {
 
 	if (TraceLevel >= 2) printf("A_interrupt: resending last packet\n");
 	tolayer3(AEntity, sender.last_pkt);
-	// printf("A_interrupt: called tolayer3(), sending: %d\n", sender.sending);
-	startTimer(AEntity, timeout); //TODO: change this value, look at RTT slides in 14
+	startTimer(AEntity, timeout);
 	if (TraceLevel >= 2) printf("A_interrupt: starting timer with timeout: %f\n", timeout);
-	//TODO: Does stoptimer need to be called before starttimer here?
 	gettimeofday(&start, NULL);
 }  
 
@@ -297,15 +261,13 @@ void B_input(struct pkt packet) {
 		msg.data[i] = packet.payload[i];
 		ack_pkt.payload[i] = packet.payload[i];
 	}
-	ack_pkt.checksum = checksum(ack_pkt); //TODO: does checksum work when no msg defined?
+	ack_pkt.checksum = checksum(ack_pkt);
 	tolayer3(BEntity, ack_pkt);
 
 	if (TraceLevel >= 2) printf("B_input: Sending message to layer 5\n");
 	tolayer5(BEntity, msg);
-	//TODO: messages incorrectly received
 
 	receiver.last_ack = ack_pkt;
-
 }
 
 /*
@@ -322,11 +284,10 @@ void  B_timerinterrupt() {
  * entity B routines are called. You can use it to do any initialization 
  */
 void B_init() {
-
 	struct pkt ack;
 	ack.seqnum = 1;
 	ack.acknum = 1;
-	//20 char msg identical to B side's initial 'previous ACK' first case of first pkt being incorrect
+	//20 char msg identical to B side's initial 'previous ACK' for case of first pkt being incorrect
 	struct msg msg;
 	for (int i = 0; i < MESSAGE_LENGTH; i++) msg.data[i] = 'a';
 	memmove(ack.payload, msg.data, MESSAGE_LENGTH);
@@ -336,7 +297,8 @@ void B_init() {
 
 /*
  * checksum(packet) computes the checksum for a packet. The checksum is a
- * sum of a character (ASCII value) times it's array position
+ * sum of a character (ASCII value) times it's array position plus values derived 
+ * from the ack and seq nums
  */
 int checksum(struct pkt packet) {
 	int csum = 0;
@@ -344,7 +306,6 @@ int checksum(struct pkt packet) {
 		csum += (i * (int)(packet.payload[i]));
 		csum += (i * (1 + packet.acknum) * (2 + packet.seqnum));
 	}
-	printf("Checksum: pkt.seqnum: %d, pkt.acknum: %d, pkt.payload.data: %s\n", packet.seqnum, packet.acknum, packet.payload);
 	return csum;
 }
 
@@ -369,13 +330,7 @@ struct pkt_node* get_pkt() {
 	return temp;
 }
 
-void queue_last_pkt() {
-	struct pkt_node *node = {NULL}; //(struct pkt_node)malloc(sizeof(struct pkt_node));
-	node->pkt = sender.last_pkt;
-	node->next = NULL;
-	add_to_queue(node);
-}
-
+//returns length of queue
 int queue_length() {
 	int x = 0;
 	struct pkt_node *current = queue->head;
@@ -384,18 +339,4 @@ int queue_length() {
 		current = current->next;
 	}
 	return x;
-}
-
-void send_queue() {
-	// while (queue_length() != 0) {
-		struct pkt_node *send_pkt;
-		send_pkt = get_pkt();
-		// if (send_pkt == NULL) return;
-		sender.last_pkt = send_pkt->pkt;
-		sender.sending = 0;
-		tolayer3(AEntity, send_pkt->pkt);
-		if (TraceLevel >= 2) printf("send_queue: sending message...\n");
-		startTimer(AEntity, timeout); //TODO: change this value, look at RTT slides in 14
-		gettimeofday(&start, NULL);
-	// }
 }
