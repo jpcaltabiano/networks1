@@ -68,6 +68,7 @@ struct timeval start, end;
 double avg_rtt = 15;
 double dev_rtt = 0;
 double timeout = 15;
+int interrupts = 0;
 
 int checksum(struct pkt packet);
 void add_to_queue(struct pkt_node* node);
@@ -127,9 +128,11 @@ void A_input(struct pkt packet) {
 	gettimeofday(&end, NULL);
 	double sample_rtt = end.tv_usec - start.tv_usec;
 	avg_rtt = ((1 - ALPHA) * avg_rtt) + (ALPHA * fabs(sample_rtt));
+	//artificially maintain avg minimum of 5 to prevent recursive diminishing to <0.1
+	if (avg_rtt < 5) avg_rtt = 5;
 	dev_rtt = ((1 - BETA) * dev_rtt) + (BETA * fabs(sample_rtt));
 	timeout = avg_rtt + (4 * dev_rtt);
-	if (TraceLevel >= 2) printf("avg RTT: %f, start: %ld, end: %ld\n", avg_rtt, start.tv_usec, end.tv_usec);
+	if (TraceLevel >= 2) printf("timeout: %f, sample: %f, avg RTT: %f, start: %ld, end: %ld\n", timeout, sample_rtt, avg_rtt, start.tv_usec, end.tv_usec);
 
 	//if received packet is corrupted, resend current packet
 	if (packet.checksum != checksum(packet)) {
@@ -173,6 +176,9 @@ void A_input(struct pkt packet) {
  * and stoptimer() in the writeup for how the timer is started and stopped.
  */
 void A_timerinterrupt() {
+
+	interrupts++;
+	if (TraceLevel >= 2) printf("interrupts: %d\n", interrupts);
 
 	if (TraceLevel >= 2) printf("A_interrupt: resending last packet\n");
 	tolayer3(AEntity, sender.last_pkt);
@@ -220,10 +226,13 @@ void A_init() {
 void B_input(struct pkt packet) {
 
 	//packet is corrupted
+	//weird edge case where seqnum and acknum were corrupted but somehow checksum was right
+	//&& (packet.seqnum != 0 || packet.seqnum != 1)
+	if (TraceLevel >= 2) printf("B_input: checksum: %d, calculated: %d\n", packet.checksum, checksum(packet));
 	if (packet.checksum != checksum(packet)) {
 		if (TraceLevel >= 2) printf("B_input: Received corrupted pkt, discarding\n\
 		B_input: checksum: %d, calculated: %d\n", packet.checksum, checksum(packet));
-		tolayer3(BEntity, receiver.last_ack);
+		// tolayer3(BEntity, receiver.last_ack);
 		return;
 	}
 
@@ -237,7 +246,7 @@ void B_input(struct pkt packet) {
 	if (TraceLevel >= 2) printf("B_input: Received packet, sending ACK\n");
 	struct pkt ack_pkt;
 	struct msg msg;
-	ack_pkt.acknum = packet.seqnum;
+	ack_pkt.acknum = ack_pkt.seqnum = packet.seqnum;
 	int i;
 	for (i = 0; i < MESSAGE_LENGTH; i++) {
 		msg.data[i] = packet.payload[i];
@@ -295,7 +304,7 @@ int checksum(struct pkt packet) {
 
 //add to tail of queue
 void add_to_queue(struct pkt_node* node) {
-	node->pkt.seqnum = !(sender.seq);
+	node->pkt.seqnum = node->pkt.acknum = !(sender.seq);
 	sender.seq = !(sender.seq);
 	node->pkt.checksum = checksum(node->pkt);
 	if (queue->tail == NULL){

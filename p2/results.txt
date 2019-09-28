@@ -1,0 +1,704 @@
+-----  Network Simulator Version    2.3 -------- 
+
+Enter the number of messages to simulate: Packet loss probability [enter number between 0.0 and 1.0]: Packet corruption probability [0.0 for no corruption]: Packet out-of-order probability [0.0 for no out-of-order]: Average time between messages from sender's layer5 [ > 0.0]: Enter Level of tracing desired: Do you want actions randomized: (1 = yes, 0 = no)? Do you want Bidirectional: (1 = yes, 0 = no)? Input parameters:
+Number of Messages = 10  Lost Packet Prob. =   0.500
+Corrupt Packet Prob. =   0.000  Out Of Order Prob. =   0.000
+Ave. time between messages =  1000.00  Trace level = 1
+Randomize = 1  Bi-directional = 0
+
+A:     702.7223,  Layer 5 to 4  Message = !fEVhy->Pbs'2J3m~2DU
+B:     762.1429,  Layer 4 to 5  Message = !fEVhy->Pbs'2J3m~2DU
+A:    1357.1100,  Layer 5 to 4  Message = ##i.Qt9]!Eh-Ps8[~Dg,
+B:    1385.6506,  Layer 4 to 5  Message = ##i.Qt9]!Eh-Ps8[~Dg,
+
+Printing the contents of the Simulation Event Q
+Event Time = 2571.538 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 1407.548 A: Timer    
+Event Time = 2571.538 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 2571.538 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 1430.418 B: LAYER 3  Seq/Ack/Check = 1/1/16306:  ##i.Qt9]!Eh-Ps8[~Dg,
+Event Time = 2571.538 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 1432.766 A: Timer    
+Event Time = 2571.538 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 1438.626 A: LAYER 3  Seq/Ack/Check = 1/1/16306:  ##i.Qt9]!Eh-Ps8[~Dg,
+Event Time = 2571.538 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 1445.376 A: Timer    
+Event Time = 1447.032 B: LAYER 3  Seq/Ack/Check = 1/1/16306:  ##i.Qt9]!Eh-Ps8[~Dg,
+Event Time = 2571.538 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 2571.538 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+
+A:    2571.5380,  Layer 5 to 4  Message = $X$d:oFzQ(]3h>sJ~U,a
+
+Printing the contents of the Simulation Event Q
+Event Time = 3047.323 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 3047.323 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 3047.323 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 3047.323 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 3047.323 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 3047.323 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 3047.323 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 2697.308 B: LAYER 3  Seq/Ack/Check = 0/0/16270:  $X$d:oFzQ(]3h>sJ~U,a
+Event Time = 3047.323 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 2700.087 A: Timer    
+Event Time = 2719.612 B: LAYER 3  Seq/Ack/Check = 0/0/16270:  $X$d:oFzQ(]3h>sJ~U,a
+Event Time = 3047.323 A: LAYER 5  
+
+B:    2697.3081,  Layer 4 to 5  Message = $X$d:oFzQ(]3h>sJ~U,a
+A:    3047.3233,  Layer 5 to 4  Message = %kS%$jR:#iQ9!hP8~gO7
+B:    3074.0158,  Layer 4 to 5  Message = %kS%$jR:#iQ9!hP8~gO7
+A:    4508.6465,  Layer 5 to 4  Message = &}wq&e_XRLF?93-'~xrl
+B:    4512.6501,  Layer 4 to 5  Message = &}wq&e_XRLF?93-'~xrl
+
+Printing the contents of the Simulation Event Q
+Event Time = 5540.793 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 5540.793 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 4545.896 B: LAYER 3  Seq/Ack/Check = 0/0/16380:  &}wq&e_XRLF?93-'~xrl
+Event Time = 5540.793 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 4553.842 A: Timer    
+Event Time = 5540.793 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 4560.915 A: LAYER 3  Seq/Ack/Check = 0/0/16380:  &}wq&e_XRLF?93-'~xrl
+Event Time = 5540.793 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 4565.141 A: Timer    
+Event Time = 5540.793 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+
+A:    5540.7934,  Layer 5 to 4  Message = '2=IT'kv$x:FQ]hs~,7C
+
+Printing the contents of the Simulation Event Q
+Event Time = 6029.757 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 5568.284 B: LAYER 3  Seq/Ack/Check = 1/1/16637:  '2=IT'kv$x:FQ]hs~,7C
+Event Time = 6029.757 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 5579.412 A: Timer    
+Event Time = 5594.366 B: LAYER 3  Seq/Ack/Check = 1/1/16637:  '2=IT'kv$x:FQ]hs~,7C
+Event Time = 6029.757 A: LAYER 5  
+
+B:    5568.2842,  Layer 4 to 5  Message = '2=IT'kv$x:FQ]hs~,7C
+A:    6029.7573,  Layer 5 to 4  Message = (Eb~=Z(6SpxLi(Eb~=Zw
+B:    6063.3016,  Layer 4 to 5  Message = (Eb~=Z(6SpxLi(Eb~=Zw
+A:    7380.3977,  Layer 5 to 4  Message = dW(V'U&)%S$R2Q!P~O}N
+B:    7406.4234,  Layer 4 to 5  Message = dW(V'U&)%S$R2Q!P~O}N
+
+Printing the contents of the Simulation Event Q
+Event Time = 7419.148 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7424.011 A: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7426.131 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 9082.774 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7424.011 A: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7424.488 A: Timer    
+Event Time = 7426.131 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7448.150 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 9082.774 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7424.488 A: Timer    
+Event Time = 7426.131 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7448.150 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 9082.774 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7448.150 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 9082.774 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 9082.774 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+
+A:    9082.7738,  Layer 5 to 4  Message = *jL.nP2r*6vX:z]>~aC%
+
+Printing the contents of the Simulation Event Q
+Event Time = 9104.169 A: Timer    
+Event Time = 10116.356 A: LAYER 5  
+
+B:    9094.0065,  Layer 4 to 5  Message = *jL.nP2r*6vX:z]>~aC%
+A:   10116.3558,  Layer 5 to 4  Message = +fpdWK>2&+k_RF3-~rfY
+B:   10227.3957,  Layer 4 to 5  Message = +fpdWK>2&+k_RF3-~rfY
+
+
+Simulator terminated at time 10234.494111
+ after receiving 10 msgs at layer5
+Simulator Analysis:
+  Number of messages sent from 5 to 4: 10
+  Number of messages received at Layer 5, side A: 0
+  Number of messages received at Layer 5, side B: 10
+  Number of messages incorrectly received at layer 5: 0
+  Number of packets entering the network: 82
+  Average number of packets already in network:     0.280
+  Number of packets that the network lost: 46
+  Number of packets that the network corrupted: 0
+  Number of packets that the network put out of order: 0
+
+
+-----  Network Simulator Version    2.3 -------- 
+
+Enter the number of messages to simulate: Packet loss probability [enter number between 0.0 and 1.0]: Packet corruption probability [0.0 for no corruption]: Packet out-of-order probability [0.0 for no out-of-order]: Average time between messages from sender's layer5 [ > 0.0]: Enter Level of tracing desired: Do you want actions randomized: (1 = yes, 0 = no)? Do you want Bidirectional: (1 = yes, 0 = no)? Input parameters:
+Number of Messages = 10  Lost Packet Prob. =   0.000
+Corrupt Packet Prob. =   0.500  Out Of Order Prob. =   0.000
+Ave. time between messages =  1000.00  Trace level = 1
+Randomize = 1  Bi-directional = 0
+
+A:     485.6083,  Layer 5 to 4  Message = !fEVhy->Pbs'2J3m~2DU
+B:     503.0228,  Layer 4 to 5  Message = !fEVhy->Pbs'2J3m~2DU
+A:    2104.0630,  Layer 5 to 4  Message = ##i.Qt9]!Eh-Ps8[~Dg,
+B:    2117.4397,  Layer 4 to 5  Message = ##i.Qt9]!Eh-Ps8[~Dg,
+
+Printing the contents of the Simulation Event Q
+Event Time = 2135.865 A: LAYER 3  Seq/Ack/Check = 1560281089/1/16306:  ##i.Qt9 !Eh-Ps8[~Dg,
+Event Time = 2525.302 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 2134.813 A: Timer    
+Event Time = 2135.865 A: LAYER 3  Seq/Ack/Check = 1560281089/1/16306:  ##i.Qt9 !Eh-Ps8[~Dg,
+Event Time = 2525.302 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 2135.865 A: LAYER 3  Seq/Ack/Check = 1560281089/1/16306:  ##i.Qt9 !Eh-Ps8[~Dg,
+Event Time = 2525.302 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 2150.188 A: Timer    
+Event Time = 2165.079 B: LAYER 3  Seq/Ack/Check = 1/1/16306:  ##i.Qt9]!Eh-Ps8[~Dg,
+Event Time = 2525.302 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 2165.079 B: LAYER 3  Seq/Ack/Check = 1/1/16306:  ##i.Qt9]!Eh-Ps8[~Dg,
+Event Time = 2177.213 B: LAYER 3  Seq/Ack/Check = 0/1/16793522:  ##i.Qt9]!Eh-Ps8[~Dg,
+Event Time = 2525.302 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 2171.272 A: Timer    
+Event Time = 2177.213 B: LAYER 3  Seq/Ack/Check = 0/1/16793522:  ##i.Qt9]!Eh-Ps8[~Dg,
+Event Time = 2199.272 B: LAYER 3  Seq/Ack/Check = 178/1/16129:  ##i.Qt9]!Eh-Ps8[~Dg,
+Event Time = 2525.302 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 2171.272 A: Timer    
+Event Time = 2177.213 B: LAYER 3  Seq/Ack/Check = 0/1/16793522:  ##i.Qt9]!Eh-Ps8[~Dg,
+Event Time = 2199.272 B: LAYER 3  Seq/Ack/Check = 178/1/16129:  ##i.Qt9]!Eh-Ps8[~Dg,
+Event Time = 2525.302 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 2199.272 B: LAYER 3  Seq/Ack/Check = 178/1/16129:  ##i.Qt9]!Eh-Ps8[~Dg,
+Event Time = 2525.302 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 2525.302 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+
+A:    2525.3020,  Layer 5 to 4  Message = $X$d:oFzQ(]3h>sJ~U,a
+
+Printing the contents of the Simulation Event Q
+Event Time = 2550.230 A: Timer    
+Event Time = 3313.914 A: LAYER 5  
+
+B:    2532.1668,  Layer 4 to 5  Message = $X$d:oFzQ(]3h>sJ~U,a
+A:    3313.9144,  Layer 5 to 4  Message = %kS%$jR:#iQ9!hP8~gO7
+B:    3344.0878,  Layer 4 to 5  Message = %kS%$jR:#iQ9!hP8~gO7
+A:    4326.7963,  Layer 5 to 4  Message = &}wq&e_XRLF?93-'~xrl
+B:    4395.2564,  Layer 4 to 5  Message = &}wq&e_XRLF?93-'~xrl
+
+Printing the contents of the Simulation Event Q
+Event Time = 4406.223 A: Timer    
+Event Time = 4412.226 B: LAYER 3  Seq/Ack/Check = 0/0/16380:  &}wq&e_XRLF?93-'~xrl
+Event Time = 5717.798 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 5717.798 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 5717.798 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+
+A:    5717.7982,  Layer 5 to 4  Message = '2=IT'kv$x:FQ]hs~,7C
+
+Printing the contents of the Simulation Event Q
+Event Time = 5742.205 A: Timer    
+Event Time = 6004.768 A: LAYER 5  
+
+B:    5726.3194,  Layer 4 to 5  Message = '2=IT'kv$x:FQ]hs~,7C
+A:    6004.7685,  Layer 5 to 4  Message = (Eb~=Z(6SpxLi(Eb~=Zw
+B:    6025.8059,  Layer 4 to 5  Message = (Eb~=Z(6SpxLi(Eb~=Zw
+A:    6879.7215,  Layer 5 to 4  Message = dW(V'U&)%S$R2Q!P~O}N
+B:    6927.1322,  Layer 4 to 5  Message = dW(V'U&)%S$R2Q!P~O}N
+
+Printing the contents of the Simulation Event Q
+Event Time = 6946.807 A: LAYER 3  Seq/Ack/Check = 1/1/15372:  bW(V!U&)%S$R3Q'P~O}N
+Event Time = 6948.141 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 6946.807 A: LAYER 3  Seq/Ack/Check = 1/1/15372:  bW(V!U&)%S$R3Q'P~O}N
+Event Time = 6948.141 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 6973.981 B: LAYER 3  Seq/Ack/Check = 1/654311425/15372:  bW(V U&)%S$R3Q!P~O}N
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 6948.141 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 6959.262 A: Timer    
+Event Time = 6973.981 B: LAYER 3  Seq/Ack/Check = 1/654311425/15372:  bW(V U&)%S$R3Q!P~O}N
+Event Time = 7000.959 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 6966.173 A: Timer    
+Event Time = 6973.981 B: LAYER 3  Seq/Ack/Check = 1/654311425/15372:  bW(V U&)%S$R3Q!P~O}N
+Event Time = 7000.959 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7027.343 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 6972.171 A: LAYER 3  Seq/Ack/Check = 1/1/15372:  bW(V'U})%S$R3Q!P~O&N
+Event Time = 6973.981 B: LAYER 3  Seq/Ack/Check = 1/654311425/15372:  bW(V U&)%S$R3Q!P~O}N
+Event Time = 7000.959 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7027.343 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 6973.981 B: LAYER 3  Seq/Ack/Check = 1/654311425/15372:  bW(V U&)%S$R3Q!P~O}N
+Event Time = 6985.538 A: Timer    
+Event Time = 7000.959 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7027.343 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7035.363 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 6995.264 A: Timer    
+Event Time = 7000.959 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7027.343 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7035.363 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7039.892 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7000.959 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7027.343 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7035.363 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7039.892 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7018.356 A: Timer    
+Event Time = 7027.343 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7035.363 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7039.892 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7046.817 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7018.356 A: Timer    
+Event Time = 7027.343 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7035.363 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7039.892 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7046.817 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7035.363 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7039.892 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7046.817 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7052.507 A: Timer    
+Event Time = 7057.936 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7035.363 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7039.892 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7046.817 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7052.507 A: Timer    
+Event Time = 7057.936 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7039.892 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7046.817 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7057.936 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7039.892 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7046.817 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7057.936 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7046.817 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7057.936 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7082.768 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7131.230 A: Timer    
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7057.936 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7058.367 A: LAYER 3  Seq/Ack/Check = 0/1/80908:  bW(V'U&)%S$R3Q!P~O}N
+Event Time = 7082.768 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7131.230 A: Timer    
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7058.367 A: LAYER 3  Seq/Ack/Check = 0/1/80908:  bW(V'U&)%S$R3Q!P~O}N
+Event Time = 7068.820 A: LAYER 3  Seq/Ack/Check = 41/1/15372:  bW(V'U&%S$R3Q!P~O}N
+Event Time = 7082.768 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7131.230 A: Timer    
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7068.820 A: LAYER 3  Seq/Ack/Check = 41/1/15372:  bW(V'U&%S$R3Q!P~O}N
+Event Time = 7082.768 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7095.046 A: LAYER 3  Seq/Ack/Check = 1/1/15372:  bW(V'U%)&S$R3Q!P~O}N
+Event Time = 7131.230 A: Timer    
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7082.768 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7087.872 B: LAYER 3  Seq/Ack/Check = 1/1/1342192652:  bW(V'U&)%S$R3Q! ~O}N
+Event Time = 7095.046 A: LAYER 3  Seq/Ack/Check = 1/1/15372:  bW(V'U%)&S$R3Q!P~O}N
+Event Time = 7220.048 A: Timer    
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7087.872 B: LAYER 3  Seq/Ack/Check = 1/1/1342192652:  bW(V'U&)%S$R3Q! ~O}N
+Event Time = 7095.046 A: LAYER 3  Seq/Ack/Check = 1/1/15372:  bW(V'U%)&S$R3Q!P~O}N
+Event Time = 7102.795 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7290.704 A: Timer    
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7095.046 A: LAYER 3  Seq/Ack/Check = 1/1/15372:  bW(V'U%)&S$R3Q!P~O}N
+Event Time = 7102.795 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7114.836 A: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7290.704 A: Timer    
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7102.795 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7114.836 A: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7290.704 A: Timer    
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7114.836 A: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7132.514 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7405.847 A: Timer    
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7130.043 A: LAYER 3  Seq/Ack/Check = 1/2686977/15372:  bW(V'U& %S$R3Q!P~O}N
+Event Time = 7132.514 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7405.847 A: Timer    
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7132.514 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7405.847 A: Timer    
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7159.611 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7584.660 A: Timer    
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7159.611 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 7584.660 A: Timer    
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7169.276 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  bW(VNU&)%S$R3Q!P~O}'
+Event Time = 7671.368 A: Timer    
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7169.276 B: LAYER 3  Seq/Ack/Check = 1/1/15372:  bW(VNU&)%S$R3Q!P~O}'
+Event Time = 7671.368 A: Timer    
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 7671.368 A: Timer    
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 8234.605 A: Timer    
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 8797.841 A: Timer    
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 8828.341 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 8828.341 A: LAYER 5  
+Event Time = 9361.078 A: Timer    
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 8834.800 A: LAYER 3  Seq/Ack/Check = 1/1/15372:  dW(V'U&)%S$R2Q!P~O}N
+Event Time = 9361.078 A: Timer    
+
+A:    8828.3413,  Layer 5 to 4  Message = *jL.nP2r*6vX:z]>~aC%
+
+Printing the contents of the Simulation Event Q
+Event Time = 8855.908 B: LAYER 3  Seq/Ack/Check = 0/0/15772:  *jL.nP2r*6vX:z]>~aC%
+Event Time = 9361.078 A: Timer    
+Event Time = 9751.910 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 9361.078 A: Timer    
+Event Time = 9751.910 A: LAYER 5  
+
+B:    8855.9084,  Layer 4 to 5  Message = *jL.nP2r*6vX:z]>~aC%
+A:    9751.9097,  Layer 5 to 4  Message = +fpdWK>2&+k_RF3-~rfY
+B:    9775.6926,  Layer 4 to 5  Message = +fpdWK>2&+k_RF3-~rfY
+
+
+Simulator terminated at time 9789.483253
+ after receiving 10 msgs at layer5
+Simulator Analysis:
+  Number of messages sent from 5 to 4: 10
+  Number of messages received at Layer 5, side A: 0
+  Number of messages received at Layer 5, side B: 10
+  Number of messages incorrectly received at layer 5: 0
+  Number of packets entering the network: 75
+  Average number of packets already in network:     0.640
+  Number of packets that the network lost: 0
+  Number of packets that the network corrupted: 30
+  Number of packets that the network put out of order: 0
+
+
+
+-----  Network Simulator Version    2.3 -------- 
+
+Enter the number of messages to simulate: Packet loss probability [enter number between 0.0 and 1.0]: Packet corruption probability [0.0 for no corruption]: Packet out-of-order probability [0.0 for no out-of-order]: Average time between messages from sender's layer5 [ > 0.0]: Enter Level of tracing desired: Do you want actions randomized: (1 = yes, 0 = no)? Do you want Bidirectional: (1 = yes, 0 = no)? Input parameters:
+Number of Messages = 10  Lost Packet Prob. =   0.000
+Corrupt Packet Prob. =   0.000  Out Of Order Prob. =   0.500
+Ave. time between messages =  1000.00  Trace level = 1
+Randomize = 1  Bi-directional = 0
+
+A:    1322.7727,  Layer 5 to 4  Message = !fEVhy->Pbs'2J3m~2DU
+B:    1338.4350,  Layer 4 to 5  Message = !fEVhy->Pbs'2J3m~2DU
+A:    3164.2777,  Layer 5 to 4  Message = ##i.Qt9]!Eh-Ps8[~Dg,
+B:    3173.3492,  Layer 4 to 5  Message = ##i.Qt9]!Eh-Ps8[~Dg,
+
+Printing the contents of the Simulation Event Q
+Event Time = 3183.923 A: LAYER 3  Seq/Ack/Check = 1/1/16306:  ##i.Qt9]!Eh-Ps8[~Dg,
+Event Time = 3693.306 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 3185.985 B: LAYER 3  Seq/Ack/Check = 1/1/16306:  ##i.Qt9]!Eh-Ps8[~Dg,
+Event Time = 3197.434 A: Timer    
+Event Time = 3693.306 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 3693.306 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 3693.306 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+
+A:    3693.3056,  Layer 5 to 4  Message = $X$d:oFzQ(]3h>sJ~U,a
+
+Printing the contents of the Simulation Event Q
+Event Time = 3722.630 B: LAYER 3  Seq/Ack/Check = 0/0/16270:  $X$d:oFzQ(]3h>sJ~U,a
+Event Time = 5031.239 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+Event Time = 3722.630 B: LAYER 3  Seq/Ack/Check = 0/0/16270:  $X$d:oFzQ(]3h>sJ~U,a
+Event Time = 3733.269 A: Timer    
+Event Time = 5031.239 A: LAYER 5  
+
+B:    3714.4790,  Layer 4 to 5  Message = $X$d:oFzQ(]3h>sJ~U,a
+A:    5031.2388,  Layer 5 to 4  Message = %kS%$jR:#iQ9!hP8~gO7
+B:    5047.8724,  Layer 4 to 5  Message = %kS%$jR:#iQ9!hP8~gO7
+A:    5503.7722,  Layer 5 to 4  Message = &}wq&e_XRLF?93-'~xrl
+B:    5506.9263,  Layer 4 to 5  Message = &}wq&e_XRLF?93-'~xrl
+
+Printing the contents of the Simulation Event Q
+Event Time = 5523.445 A: Timer    
+Event Time = 6782.961 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+
+A:    6782.9609,  Layer 5 to 4  Message = '2=IT'kv$x:FQ]hs~,7C
+
+Printing the contents of the Simulation Event Q
+Event Time = 6803.214 A: Timer    
+Event Time = 7455.935 A: LAYER 5  
+
+B:    6786.3062,  Layer 4 to 5  Message = '2=IT'kv$x:FQ]hs~,7C
+A:    7455.9353,  Layer 5 to 4  Message = (Eb~=Z(6SpxLi(Eb~=Zw
+B:    7463.3177,  Layer 4 to 5  Message = (Eb~=Z(6SpxLi(Eb~=Zw
+A:    7701.5441,  Layer 5 to 4  Message = dW(V'U&)%S$R2Q!P~O}N
+B:    7715.5206,  Layer 4 to 5  Message = dW(V'U&)%S$R2Q!P~O}N
+
+Printing the contents of the Simulation Event Q
+Event Time = 7720.144 A: Timer    
+Event Time = 8115.137 A: LAYER 5  
+
+
+Printing the contents of the Simulation Event Q
+
+A:    8115.1374,  Layer 5 to 4  Message = *jL.nP2r*6vX:z]>~aC%
+
+Printing the contents of the Simulation Event Q
+Event Time = 8133.265 A: Timer    
+Event Time = 10024.596 A: LAYER 5  
+
+B:    8120.6426,  Layer 4 to 5  Message = *jL.nP2r*6vX:z]>~aC%
+A:   10024.5960,  Layer 5 to 4  Message = +fpdWK>2&+k_RF3-~rfY
+B:   10029.0199,  Layer 4 to 5  Message = +fpdWK>2&+k_RF3-~rfY
+
+
+Simulator terminated at time 10030.313490
+ after receiving 10 msgs at layer5
+Simulator Analysis:
+  Number of messages sent from 5 to 4: 10
+  Number of messages received at Layer 5, side A: 0
+  Number of messages received at Layer 5, side B: 10
+  Number of messages incorrectly received at layer 5: 0
+  Number of packets entering the network: 28
+  Average number of packets already in network:     0.143
+  Number of packets that the network lost: 0
+  Number of packets that the network corrupted: 0
+  Number of packets that the network put out of order: 15
