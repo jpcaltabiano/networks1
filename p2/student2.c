@@ -30,25 +30,6 @@
  * All these routines are in layer 4.
  */
 
-/*
- * Old makefile:
-
-all: p2
-
-p2: project2.o student2.o
-	gcc -g project2.o student2.o -o p2
-
-project2.o: project2.c project2.h
-	gcc -c -g project2.c
-
-student2.o: student2.c project2.h
-	gcc -c -g student2.c
-
-clean:
-	rm -f *.o p2
-
-*/
-
 #define ALPHA 0.125
 #define BETA 0.25
 
@@ -215,7 +196,8 @@ void A_init() {
 	ack.acknum = 1;
 	//20 char msg identical to B side's initial 'previous ACK' first case of first pkt being incorrect
 	struct msg msg;
-	for (int i = 0; i < MESSAGE_LENGTH; i++) msg.data[i] = 'a';
+	int i;
+	for (i = 0; i < MESSAGE_LENGTH; i++) msg.data[i] = 'a';
 	memmove(ack.payload, msg.data, MESSAGE_LENGTH);
 	ack.checksum = checksum(ack);
 	sender.last_ack = ack;
@@ -256,8 +238,8 @@ void B_input(struct pkt packet) {
 	struct pkt ack_pkt;
 	struct msg msg;
 	ack_pkt.acknum = packet.seqnum;
-
-	for (int i = 0; i < MESSAGE_LENGTH; i++) {
+	int i;
+	for (i = 0; i < MESSAGE_LENGTH; i++) {
 		msg.data[i] = packet.payload[i];
 		ack_pkt.payload[i] = packet.payload[i];
 	}
@@ -289,7 +271,8 @@ void B_init() {
 	ack.acknum = 1;
 	//20 char msg identical to B side's initial 'previous ACK' for case of first pkt being incorrect
 	struct msg msg;
-	for (int i = 0; i < MESSAGE_LENGTH; i++) msg.data[i] = 'a';
+	int i;
+	for (i = 0; i < MESSAGE_LENGTH; i++) msg.data[i] = 'a';
 	memmove(ack.payload, msg.data, MESSAGE_LENGTH);
 	ack.checksum = checksum(ack);
 	receiver.last_ack = ack;
@@ -302,7 +285,8 @@ void B_init() {
  */
 int checksum(struct pkt packet) {
 	int csum = 0;
-	for (int i = 0; i < MESSAGE_LENGTH; i++) {
+	int i;
+	for (i = 0; i < MESSAGE_LENGTH; i++) {
 		csum += (i * (int)(packet.payload[i]));
 		csum += (i * (1 + packet.acknum) * (2 + packet.seqnum));
 	}
