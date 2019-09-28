@@ -65,12 +65,10 @@ struct sender {
 	int seq; //seqnum of previously sent pkt
 	struct pkt last_pkt;
 	struct pkt last_ack;
-	int exp_seq; //expected sequence number
 };
 
 struct receiver {
 	struct pkt last_ack;
-	int exp_seq; //expected sequence number
 };
 
 struct pkt_node {
@@ -124,6 +122,7 @@ void A_output(struct msg message) {
 	node->pkt = queue_pkt;
 	node->next = NULL;
 	add_to_queue(node);
+	if (TraceLevel >= 2) printf("A_output: Incoming message added to queue\n");
 
 	//if a packet is in transmission then do not send another
 	if (!sender.sending) return;
@@ -136,7 +135,7 @@ void A_output(struct msg message) {
 	sender.sending = 0;
 	tolayer3(AEntity, send_pkt->pkt);
 	if (TraceLevel >= 2) printf("A_output: sending message...\n");
-	startTimer(AEntity, timeout); //TODO: change this value, look at RTT slides in 14
+	startTimer(AEntity, timeout);
 	gettimeofday(&start, NULL);
 }
 
@@ -183,10 +182,10 @@ void A_input(struct pkt packet) {
 	if (packet.acknum == sender.last_ack.acknum) {
 		// stopTimer(AEntity);
 		// startTimer(AEntity, RTT);
-		if (TraceLevel >= 2) printf("A_input: duplicate ACK, resending\n");
-		tolayer3(AEntity, sender.last_pkt);
-		stopTimer(AEntity);
-		startTimer(AEntity, timeout);
+		if (TraceLevel >= 2) printf("A_input: duplicate ACK\n");
+		// tolayer3(AEntity, sender.last_pkt);
+		// stopTimer(AEntity);
+		// startTimer(AEntity, timeout);
 		return;
 	}
 	
@@ -195,10 +194,9 @@ void A_input(struct pkt packet) {
 	num_acks++;
 
 	sender.last_ack = packet;
-	sender.sending = 1; //now ready to send another packet
-	sender.exp_seq++;
+	// sender.sending = 1; //now ready to send another packet
 
-	printf("A_input: num_acks: %d, queue_length: %d\n", num_acks, queue_length());
+	if (TraceLevel >= 2) printf("A_input: num_acks: %d, queue_length: %d\n", num_acks, queue_length());
 	// if ((num_acks + queue_length() == MaxMsgsToSimulate) && (num_acks != MaxMsgsToSimulate)) {
 	// if (queue_length() != 0) {
 	// 	// stopTimer(AEntity);
@@ -206,7 +204,19 @@ void A_input(struct pkt packet) {
 	// }
 
 	stopTimer(AEntity);
-
+	struct pkt_node *send_pkt;
+	if (queue_length() == 0) {
+		if (TraceLevel >= 2) printf("A_input: Queue is empty, awaiting new message\n");
+		sender.sending = 1;
+		return;
+	}
+	send_pkt = get_pkt();
+	sender.last_pkt = send_pkt->pkt;
+	sender.sending = 0;
+	tolayer3(AEntity, send_pkt->pkt);
+	if (TraceLevel >= 2) printf("A_input: sending message...\n");
+	startTimer(AEntity, timeout); //TODO: change this value, look at RTT slides in 14
+	gettimeofday(&start, NULL);
 }
 
 /*
@@ -230,8 +240,7 @@ void A_timerinterrupt() {
 /* entity A routines are called. You can use it to do any initialization */
 void A_init() {
 	sender.sending = 1;
-	sender.seq = 0;
-	sender.exp_seq = 0;
+	sender.seq = 1; //A_output assigns inverse so set to 1 for first pkt to have seqnum = 0
 
 	struct pkt pkt;
 	pkt.seqnum = 0;
@@ -266,7 +275,7 @@ void B_input(struct pkt packet) {
 
 	//packet is corrupted
 	if (packet.checksum != checksum(packet)) {
-		if (TraceLevel >= 2) printf("B_input: Received corrupted pkt, sending prev ACK\n\
+		if (TraceLevel >= 2) printf("B_input: Received corrupted pkt, discarding\n\
 		B_input: checksum: %d, calculated: %d\n", packet.checksum, checksum(packet));
 		tolayer3(BEntity, receiver.last_ack);
 		return;
@@ -279,10 +288,6 @@ void B_input(struct pkt packet) {
 		return;
 	}
 
-	if (packet.seqnum != receiver.exp_seq) {
-		if (TraceLevel >= 2) printf("B_input: Received out of order packet, resending ACK\n");
-	}
-
 	if (TraceLevel >= 2) printf("B_input: Received packet, sending ACK\n");
 	struct pkt ack_pkt;
 	struct msg msg;
@@ -292,13 +297,13 @@ void B_input(struct pkt packet) {
 		msg.data[i] = packet.payload[i];
 		ack_pkt.payload[i] = packet.payload[i];
 	}
-	ack_pkt.checksum = checksum(ack_pkt);
+	ack_pkt.checksum = checksum(ack_pkt); //TODO: does checksum work when no msg defined?
 	tolayer3(BEntity, ack_pkt);
 
 	if (TraceLevel >= 2) printf("B_input: Sending message to layer 5\n");
 	tolayer5(BEntity, msg);
 	//TODO: messages incorrectly received
-	receiver.exp_seq++;
+
 	receiver.last_ack = ack_pkt;
 
 }
@@ -345,8 +350,8 @@ int checksum(struct pkt packet) {
 
 //add to tail of queue
 void add_to_queue(struct pkt_node* node) {
-	node->pkt.seqnum = sender.seq;
-	sender.seq++; //= !(sender.seq);
+	node->pkt.seqnum = !(sender.seq);
+	sender.seq = !(sender.seq);
 	node->pkt.checksum = checksum(node->pkt);
 	if (queue->tail == NULL){
 		queue->head = queue->tail = node;
