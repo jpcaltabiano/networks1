@@ -5,23 +5,19 @@
 extern int TraceLevel;
 extern float clocktime;
 
-struct distance_table
-{
+struct distance_table {
     int costs[MAX_NODES][MAX_NODES];
 };
 
 void printdt0(int MyNodeNumber, struct NeighborCosts *neighbor,
               struct distance_table *dtptr);
-void sendPkt(int *min_arr[MAX_NODES]);
 struct distance_table dt0;
 struct NeighborCosts *neighbor0;
 
 /* students to write the following two routines, and maybe some others */
 
-//TODO: Make sure there are no loops (revisted nodes) in shortest path
-
 void rtinit0() {
-    if (TraceLevel > 1) printf("rinit0: %f\n", clocktime);
+    printf("At time t=%f, rtinit0() called.\n", clocktime);
 
     struct RoutePacket pkt;
 
@@ -46,7 +42,13 @@ void rtinit0() {
         }
         min_arr[i] = lmin;
     }
-    
+
+    printf("At time t=%f, node 0 initial distance vector: ", clocktime);
+    for(int j = 0; (j < MAX_NODES) && (j < 4); j++){
+        printf("%d   ", min_arr[j]);
+    }
+    printf("\n");
+
     if (TraceLevel > 1) printdt0(0, neighbor0, &dt0);
 
     for (int i = 0; i < neighbor0->NodesInNetwork; i++) {
@@ -55,18 +57,23 @@ void rtinit0() {
             pkt.destid = i;
 
             memcpy(pkt.mincost, min_arr, sizeof(pkt.mincost));
-            if (TraceLevel > 1) printf("rinit0: sending pkt to node %d @ t: %f\n", i, clocktime);
+
+            printf("At time t=%f, node %d sends packet to node %d with: ", clocktime, pkt.sourceid, pkt.destid);
+            for(int j = 0; (j < MAX_NODES) && (j < 4); j++){
+                printf("%d   ", min_arr[j]);
+            }
+            printf("\n");
 
             toLayer2(pkt);
-        }
+        } 
     }
 }
 
 void rtupdate0(struct RoutePacket *rcvdpkt) {
-    if (TraceLevel > 1) printf("rtupdate0: %f\n", clocktime);
+    printf("At time t=%f, rtupdate0() called, by a packet received from Sender id: %d\n", clocktime, rcvdpkt->sourceid);
 
     int lmin_cost; //local minimum cost
-    int changed = 1; //unchanged
+    int changed = 0; //unchanged
     int s = rcvdpkt->sourceid; //sender id
     int min_arr[MAX_NODES];
     struct RoutePacket pkt;
@@ -74,8 +81,18 @@ void rtupdate0(struct RoutePacket *rcvdpkt) {
     for (int i = 0; i < neighbor0->NodesInNetwork; i++) {
         lmin_cost = rcvdpkt->mincost[i];
         if (dt0.costs[i][s] > (dt0.costs[s][s] + lmin_cost)) {
+
+            //only mark update pkt to be sent if new path
+            //is less than 0's current shortest path to i
+            int min = INFINITY;
+            for (int j = 0; j < neighbor0->NodesInNetwork; j++) {
+                if (dt0.costs[i][j] < min) min = dt0.costs[i][j];
+            }
+            if ((dt0.costs[s][s] + lmin_cost) < min) changed = 1;
+
+            //update 0's path to i via s if shorter than current,
+            //even if it may not be the shortest path to i
             dt0.costs[i][s] = dt0.costs[s][s] + lmin_cost;
-            changed = 0; //changed = true
         }
     }
 
@@ -90,46 +107,38 @@ void rtupdate0(struct RoutePacket *rcvdpkt) {
             }
             min_arr[i] = lmin;
         }
-    }
 
-    if (TraceLevel > 1) printdt0(0, neighbor0, &dt0);
+        printf("At time t=%f, node 0 current distance vector: ", clocktime);
+        for(int j = 0; (j < MAX_NODES) && (j < 4); j++){
+            printf("%d   ", min_arr[j]);
+        }
+        printf("\n");
 
-    // sendPkt(&min_arr);
+        if (TraceLevel > 1) printdt0(0, neighbor0, &dt0);
 
-    for (int i = 0; i < neighbor0->NodesInNetwork; i++) {
-        if ((i != 0) && (neighbor0->NodeCosts[i] != INFINITY)) {
-            pkt.sourceid = 0;
-            pkt.destid = i;
+        for (int i = 0; i < neighbor0->NodesInNetwork; i++) {
+            if ((i != 0) && (neighbor0->NodeCosts[i] != INFINITY)) {
+                pkt.sourceid = 0;
+                pkt.destid = i;
 
-            memcpy(pkt.mincost, min_arr, sizeof(pkt.mincost));
-            if (TraceLevel > 1) printf("rtupdate0: sending pkt to node %d @ t: %f\n", i, clocktime);
+                memcpy(pkt.mincost, min_arr, sizeof(pkt.mincost));
 
-            toLayer2(pkt);
-        } else {
+                printf("At time t=%f, node %d sends packet to node %d with: ", clocktime, pkt.sourceid, pkt.destid);
+                for(int j = 0; (j < MAX_NODES) && (j < 4); j++){
+                    printf("%d   ", min_arr[j]);
+                }
+                printf("\n");
+        
+                toLayer2(pkt);
+            }
+        }
+    } else {
+        if (TraceLevel > 1) {
             printf("rtupdate0 106:\n");
             printdt0(0, neighbor0, &dt0);
         }
     }
-
 }
-
-// void sendPkt(int *min_arr[MAX_NODES]) {
-//     struct RoutePacket pkt;
-//     for (int i = 0; i < neighbor0->NodesInNetwork; i++) {
-//         if ((i != 0) && (neighbor0->NodeCosts[i] != INFINITY)) {
-//             pkt.sourceid = 0;
-//             pkt.destid = i;
-
-//             memcpy(pkt.mincost, min_arr, sizeof(pkt.mincost));
-//             if (TraceLevel > 1) printf("rtupdate0: sending pkt to node %d @ t: %f\n", i, clocktime);
-
-//             toLayer2(pkt);
-//         } else {
-//             printf("rtupdate0 106:\n");
-//             printdt0(0, neighbor0, &dt0);
-//         }
-//     }
-// }
 
 /////////////////////////////////////////////////////////////////////
 //  printdt

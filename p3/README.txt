@@ -1,0 +1,1 @@
+Navigate to the directory and run `make`. Run the program with `./p3`. Run make clean to clear the made program. 
